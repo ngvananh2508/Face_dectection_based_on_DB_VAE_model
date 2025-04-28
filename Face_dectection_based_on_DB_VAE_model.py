@@ -237,7 +237,7 @@ def sampling(z_mean, z_logsigma):
         z (tensor): sampled latent vector
     """
     eps = torch.randn_like(z_mean)
-    z = z_mean + eps*torch.exp(z_logsigma)
+    z = z_mean + eps*torch.exp(0.5*z_logsigma)
     return z
 
 def debiasing_loss_function(x, x_pred, y, y_logit, mu, logsigma):
